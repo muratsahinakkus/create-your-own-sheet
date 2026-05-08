@@ -1,0 +1,50 @@
+.progress-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  height: 62px;
+  flex-shrink: 0;
+}
+
+.progress-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  transition: width 250ms ease, height 250ms ease, background 250ms ease;
+  position: relative;
+}
+
+.progress-dot--active {
+  width: 26px;
+  height: 26px;
+  background: var(--dot-color);
+  box-shadow: 0 0 12px var(--dot-color);
+  animation: dotPulse 1.3s ease-in-out infinite;
+}
+
+.progress-dot--done {
+  width: 22px;
+  height: 22px;
+  background: var(--dot-color);
+  opacity: 0.75;
+}
+
+/* CSS checkmark for done dots */
+.progress-dot--done::after {
+  content: '';
+  position: absolute;
+  left: 22%;
+  top: 42%;
+  width: 40%;
+  height: 28%;
+  border-left: 2.5px solid #fff;
+  border-bottom: 2.5px solid #fff;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1);    opacity: 1; }
+  50%       { transform: scale(1.25); opacity: 0.85; }
+}

@@ -1,0 +1,78 @@
+.result-screen {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F8FAFC;
+  animation: resultIn 500ms ease-out both;
+}
+
+@keyframes resultIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.result-screen__sheet {
+  max-width: 90vw;
+  max-height: 88vh;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+  border-radius: 12px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
+}
+
+/* CSS placeholder sheet — shows when no real image is found */
+.result-screen__placeholder {
+  width: min(85vw, 600px);
+  height: min(85vh, 800px);
+  background: #fff;
+  border-radius: 16px;
+  border: 3px dashed #CBD5E1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+}
+
+.result-screen__placeholder-inner {
+  width: 55%;
+  height: 55%;
+  border-radius: 50%;
+  background: #F1F5F9;
+  border: 3px dashed #CBD5E1;
+}
+
+/* Hide placeholder if real image loaded */
+.result-screen__sheet + .result-screen__placeholder {
+  display: none;
+}
+
+/* Restart button */
+.result-screen__restart {
+  position: absolute;
+  bottom: 28px;
+  right: 28px;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: none;
+  background: #1E1B4B;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  z-index: 10;
+  padding: 18px;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+  outline: none;
+}
+
+.result-screen__restart:active {
+  transform: scale(0.9);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+}

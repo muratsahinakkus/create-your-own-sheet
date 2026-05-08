@@ -1,0 +1,157 @@
+.selection-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0;
+  outline: none;
+  animation: cardPop 320ms ease-out both;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.selection-card[data-transparent] {
+  box-shadow: none;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.selection-card:active {
+  transform: scale(0.92);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.selection-card--small {
+  width: 130px;
+  height: 130px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  animation: none;
+}
+
+@keyframes cardPop {
+  from {
+    opacity: 0;
+    transform: scale(0.82);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Placeholder shape — white silhouette behind image */
+.shape {
+  position: absolute;
+  width: 55%;
+  height: 55%;
+  background: rgba(255, 255, 255, 0.28);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.shape--star {
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+.shape--heart {
+  clip-path: path('M50,85 C50,85 5,55 5,30 C5,15 17,5 30,5 C38,5 45,9 50,15 C55,9 62,5 70,5 C83,5 95,15 95,30 C95,55 50,85 50,85Z');
+  width: 60%;
+  height: 60%;
+}
+.shape--cross {
+  width: 52%;
+  height: 52%;
+  background: transparent;
+}
+.shape--cross::before,
+.shape--cross::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.28);
+  border-radius: 4px;
+}
+.shape--cross::before {
+  width: 30%;
+  height: 100%;
+  left: 35%;
+  top: 0;
+}
+.shape--cross::after {
+  width: 100%;
+  height: 30%;
+  left: 0;
+  top: 35%;
+}
+.shape--diamond {
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  width: 58%;
+  height: 58%;
+}
+.shape--wave {
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  width: 60%;
+  height: 50%;
+}
+.shape--triangle {
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  width: 60%;
+  height: 55%;
+}
+.shape--circle {
+  border-radius: 50%;
+  width: 58%;
+  height: 58%;
+}
+.shape--semicircle {
+  border-radius: 200px 200px 0 0;
+  width: 60%;
+  height: 36%;
+  align-self: flex-end;
+  margin-bottom: 12%;
+}
+.shape--pentagon {
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  width: 56%;
+  height: 58%;
+}
+.shape--rectangle {
+  border-radius: 8px;
+  width: 62%;
+  height: 42%;
+}
+.shape--leaf {
+  border-radius: 0 50% 0 50%;
+  width: 52%;
+  height: 52%;
+  transform: rotate(45deg);
+}
+.shape--zigzag {
+  clip-path: polygon(0% 40%, 14% 0%, 28% 40%, 42% 0%, 57% 40%, 71% 0%, 85% 40%, 100% 0%, 100% 60%, 86% 100%, 71% 60%, 57% 100%, 43% 60%, 28% 100%, 14% 60%, 0% 100%);
+  width: 68%;
+  height: 44%;
+}
+.shape--burst {
+  clip-path: polygon(50% 0%, 56% 38%, 93% 25%, 65% 50%, 93% 75%, 56% 62%, 50% 100%, 44% 62%, 7% 75%, 35% 50%, 7% 25%, 44% 38%);
+  width: 60%;
+  height: 60%;
+}
+
+/* Real image — covers shape once loaded */
+.selection-card__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 200ms ease;
+}
+.selection-card__img--loaded {
+  opacity: 1;
+}
