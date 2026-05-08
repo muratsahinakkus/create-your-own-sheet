@@ -10,7 +10,7 @@ const STEP_KEYS = ['character', 'location', 'activity']
 
 const emptySelections = { character: null, location: null, activity: null }
 
-const selectSound = new Audio('/sounds/select.mp3')
+const selectSound = new Audio(import.meta.env.BASE_URL + 'sounds/select.mp3')
 selectSound.preload = 'auto'
 
 export default function App() {
